@@ -24,3 +24,15 @@ function type() {
 }
 
 type();
+
+document.getElementById("myForm").addEventListener("submit", function(event) {
+  // Prevent the form from submitting normally
+  event.preventDefault();
+  
+  // Get the form action attribute (where the form would normally submit to)
+  var formAction = this.getAttribute("action");
+  
+  
+  // Redirect to a new page after form submission
+  window.location.href = "username.html";
+});

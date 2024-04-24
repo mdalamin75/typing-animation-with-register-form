@@ -37,6 +37,13 @@ body {
 	-webkit-animation-fill-mode: forwards;
 	animation-fill-mode: forwards;
 }
+.css-typing #username{
+	width: 12em;
+	-webkit-animation: type 3s steps(40, end);
+	animation: type 3s steps(40, end);
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
 
 .css-typing p:nth-child(2) {
 	width: 11.5em;
@@ -152,7 +159,7 @@ body {
 	}
 }
 
-#input-container input#email {
+#input-container input#email, #input-container input#text {
     padding: 5px 10px;
     border: 1px solid;
     border-radius: 5px;
