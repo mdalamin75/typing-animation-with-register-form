@@ -16,9 +16,9 @@
             </p>
         </div>
         <div id="input-container" style="display:none;">
-            <form id="myForm" action="process_form.php" method="POST">
-                <input type="text" id="text" placeholder="Enter Your Username">
-                <input type="submit" id="submit" value="Submit">
+            <form id="myForm" action="process.php" method="POST">
+                <input type="text" name="username" id="text" placeholder="Enter Your Username">
+                <input type="submit" name="username_submit" id="username_submit" value="Submit">
             </form>
         </div>
     </div>
@@ -44,18 +44,6 @@
         }
 
         type();
-
-        document.getElementById("myForm").addEventListener("submit", function (event) {
-            // Prevent the form from submitting normally
-            event.preventDefault();
-
-            // Get the form action attribute (where the form would normally submit to)
-            var formAction = this.getAttribute("action");
-
-
-            // Redirect to a new page after form submission
-            window.location.href = "telegramUsername.html"; 
-        });
 
     </script>
 </body>

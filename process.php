@@ -5,47 +5,51 @@ require_once("db.php");
 
 // Registration Logic
 if (isset($_POST["register"])) {
-    // Get the data from register page
-    $username = mysqli_real_escape_string($conn, $_POST["username"]);
-    $name = mysqli_real_escape_string($conn, $_POST["name"]);
-    $password = mysqli_real_escape_string($conn, $_POST["password"]);
 
+    $email = mysqli_real_escape_string($conn, $_POST["email"]);
 
-    $sql = ("INSERT into user_info(username,name,password) values('$username','$name','$password')");
+    $sql = ("INSERT into user_email(email) values('$email')");
 
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        $_SESSION["username"] = $username;
-        $_SESSION["name"] = $name;
-        header("location: index.php");
+        $_SESSION["email"] = $email;
+        header("location: username.php");
     } else {
         echo "Register failed";
     }
 }
 
-// Login Logic
-if (isset($_POST["login"])) {
-    $username = mysqli_real_escape_string($conn, $_POST["username"]);
-    $password = mysqli_real_escape_string($conn, $_POST["password"]);
+// Username Logic
+if (isset($_POST["username_submit"])) {
 
-    $sql = ("SELECT * from user_info where username= '$username' and password='$password'");
+    $username = mysqli_real_escape_string($conn, $_POST["username"]);
+
+    $sql = ("INSERT into username(username) values('$username')");
+
     $result = mysqli_query($conn, $sql);
 
-    if (mysqli_num_rows($result) == 1) {
-        $fetch = mysqli_fetch_array($result);
+    if ($result) {
         $_SESSION["username"] = $username;
-        $_SESSION["name"] = $fetch["name"];
-        header("location: home.php");
+        header("location: telegramUsername.php");
     } else {
-        echo "Wrong username or password";
-        echo "<br/><br/><a href='index.php'>Try Again</a>";
+        echo "username submit failed";
     }
 }
+// Telegram Username Logic
+if (isset($_POST["telegram_username_submit"])) {
 
-// Logout Logic
-if (isset($_GET["logout"])) {
-    session_destroy();
-    header("location: index.php");
+    $telegram_username = mysqli_real_escape_string($conn, $_POST["telegram_username"]);
+
+    $sql = ("INSERT into telegram_username(telegram_username) values('$telegram_username')");
+
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        $_SESSION["telegram_username"] = $telegram_username;
+        header("location: home.php");
+    } else {
+        echo "telegram_username submit failed";
+    }
 }
 ?>

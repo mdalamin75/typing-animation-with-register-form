@@ -18,9 +18,9 @@
             </p>
         </div>
         <div id="input-container" style="display:none;">
-            <form id="myForm" action="process_form.php" method="POST">
-                <input type="email" id="email" placeholder="Enter Your Email">
-                <input type="submit" id="submit" value="Sign up">
+            <form id="myForm" action="process.php" method="POST">
+                <input type="email" name="email" id="email" placeholder="Enter Your Email">
+                <input type="submit" name="register" id="submit" value="Sign up">
             </form>
         </div>
     </div>
